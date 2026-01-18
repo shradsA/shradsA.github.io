@@ -1,0 +1,873 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shraddha Dinesh Aher - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom right, #0f172a, #581c87, #0f172a);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.875rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #c084fc;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #d1d5db;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            background: #1e293b;
+            color: white;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 1rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Hero Section */
+        .hero-content {
+            text-align: center;
+            max-width: 64rem;
+            margin: 0 auto;
+            padding-top: 4rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #d1d5db;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: #9ca3af;
+            margin-bottom: 3rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            padding: 0.75rem 2rem;
+            background: linear-gradient(to right, #a855f7, #ec4899);
+            border-radius: 9999px;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            padding: 0.75rem 2rem;
+            border: 2px solid #c084fc;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+            background: transparent;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(192, 132, 252, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            padding: 0.75rem;
+            background: #1e293b;
+            border-radius: 9999px;
+            color: white;
+            transition: background 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: #334155;
+        }
+
+        .location {
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        /* Skills Marquee */
+        .skills-marquee {
+            overflow: hidden;
+            margin-bottom: 4rem;
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 2rem;
+            animation: scroll 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        .marquee-content:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .skill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(to right, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+            border-radius: 0.75rem;
+            border: 1px solid rgba(192, 132, 252, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-dot {
+            width: 12px;
+            height: 12px;
+            background: #c084fc;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .skill-badge span {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #e9d5ff;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid #334155;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: #a855f7;
+            transform: scale(1.05);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            color: #c084fc;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            padding: 0.5rem 0.75rem;
+            background: rgba(168, 85, 247, 0.2);
+            color: #e9d5ff;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+
+        /* Experience Cards */
+        .experience-card {
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-title {
+            color: #c084fc;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            color: #d1d5db;
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-meta {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-desc {
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        /* Projects */
+        .project-title {
+            color: #c084fc;
+            font-size: 1.125rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-desc {
+            color: #d1d5db;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(168, 85, 247, 0.2);
+            color: #e9d5ff;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+        }
+
+        /* Education */
+        .edu-degree {
+            color: #c084fc;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-school {
+            color: #d1d5db;
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-meta {
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        .cert-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cert-dot {
+            width: 8px;
+            height: 8px;
+            background: #c084fc;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Contact */
+        .contact-card {
+            text-align: center;
+        }
+
+        .contact-desc {
+            font-size: 1.125rem;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 1rem;
+            border-top: 1px solid #1e293b;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        .chevron-down {
+            margin-top: 3rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">SA</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home" onclick="toggleMenu()">Home</a>
+            <a href="#about" onclick="toggleMenu()">About</a>
+            <a href="#skills" onclick="toggleMenu()">Skills</a>
+            <a href="#experience" onclick="toggleMenu()">Experience</a>
+            <a href="#projects" onclick="toggleMenu()">Projects</a>
+            <a href="#education" onclick="toggleMenu()">Education</a>
+            <a href="#contact" onclick="toggleMenu()">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="hero-content">
+            <h1>Hi, I'm <span class="gradient-text">Shraddha Dinesh Aher</span></h1>
+            <p class="hero-subtitle"> Busienss Intelligence Analyst | Business Analyst | Data Analytics | Software Engineer | Data Visualization </p>
+            <p class="hero-description">SQL, Python, Power BI, Tableau | AI/ML • Project Management • Lean Six Sigma</p>
+            
+            <div class="button-group">
+                <a href="#projects" class="btn-primary">View My Work</a>
+                <a href="#contact" class="btn-secondary">Contact Me</a>
+            </div>
+
+           <div class="social-links">
+    <!-- Email -->
+    <a href="mailto:shraddhadhruv0521@gmail.com" class="social-icon">📧</a>
+    
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/shraddha-aher21" class="social-icon">🔗</a>
+    
+    <!-- GitHub -->
+    <a href="https://github.com/shradsA" class="social-icon">🐙</a>
+    
+    <!-- LeetCode -->
+    <a href="https://leetcode.com/u/Shraddha_Aher/" class="social-icon">💻</a>
+</div>
+
+            <div class="location">
+                <span>📍</span>
+                <span>Syracuse, New York</span>
+            </div>
+
+            <div class="chevron-down">
+                <svg width="32" height="32" fill="none" stroke="#c084fc" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M19 9l-7 7-7-7"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container" style="max-width: 64rem;">
+            <h2>About <span class="gradient-text">Me</span></h2>
+            <div class="card">
+                <p style="font-size: 1.125rem; color: #d1d5db; line-height: 1.6; margin-bottom: 1.5rem;">
+                    I am a Business & Data Analytics Professional with expertise in Business Intelligence, Data Analysis, and Supply Chain Analytics. With a Master's in Business Analytics and 2.7 years of Software Engineering experience, I combine technical skills with strategic business insight.
+                </p>
+                <p style="font-size: 1.125rem; color: #d1d5db; line-height: 1.6; margin-bottom: 1.5rem;">
+                    I turn complex data into actionable insights using SQL, Python, Tableau, Power BI, and AI/ML techniques. My projects span healthcare, finance, retail, and telecom, where I've developed dashboards, predictive models, and analytics solutions that drive decision-making.
+                </p>
+                <p style="font-size: 1.125rem; color: #d1d5db; line-height: 1.6;">
+                    I also bring experience in Project Management and Lean Six Sigma, helping optimize processes and deliver measurable business impact. I am passionate about data storytelling, AI-driven insights, and process improvement.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Core <span class="gradient-text">Skills</span></h2>
+            
+            <!-- Animated Skills Marquee -->
+            <div class="skills-marquee">
+                <div class="marquee-content">
+                    <div class="skill-badge"><div class="skill-dot"></div><span>Python</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>SQL</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>Tableau</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>Power BI</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>React</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>AI/ML</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>Excel</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>Azure</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>R</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>PySpark</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>Lean Six Sigma</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>DAX</span></div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="skill-badge"><div class="skill-dot"></div><span>Python</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>SQL</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>Tableau</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>Power BI</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>React</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>AI/ML</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>Excel</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>Azure</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>R</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>PySpark</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>Lean Six Sigma</span></div>
+                    <div class="skill-badge"><div class="skill-dot"></div><span>DAX</span></div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3 class="skill-category">Business Intelligence & Analytics</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Tableau</span>
+                        <span class="tag">Power BI</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">DAX</span>
+                        <span class="tag">Microsoft Power Apps</span>
+                        <span class="tag">Azure SQL</span>
+                        <span class="tag">DBMS</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="skill-category">Data Science & Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Predictive Modeling</span>
+                        <span class="tag">AI/LLMs</span>
+                        <span class="tag">PySpark</span>
+                        <span class="tag">Scala</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="skill-category">Supply Chain & Process Optimization</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Supply Chain Analytics</span>
+                        <span class="tag">Lean Six Sigma</span>
+                        <span class="tag">DMAIC</span>
+                        <span class="tag">Process Mapping</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="skill-category">Project Management & Visualization</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Project Management</span>
+                        <span class="tag">Data Visualization</span>
+                        <span class="tag">Data Storytelling</span>
+                        <span class="tag">Figma</span>
+                        <span class="tag">Wix</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container" style="max-width: 64rem;">
+            <h2>Professional <span class="gradient-text">Experience</span></h2>
+            
+            <div class="card experience-card">
+                <h3 class="experience-title">Web Development Analyst</h3>
+                <p class="experience-company">iConsult Collaborative at Syracuse University</p>
+                <p class="experience-meta">November 2025 - Present | Syracuse, New York</p>
+                <p class="experience-desc">Working on healthcare website development focused on improving site experience. Analyzing user behavior, identifying design gaps, and implementing UI/UX enhancements using Figma and Wix.</p>
+            </div>
+
+            <div class="card experience-card">
+                <h3 class="experience-title">Lean Six Sigma Intern</h3>
+                <p class="experience-company">JMA Wireless</p>
+                <p class="experience-meta">August 2025 - December 2025 | Syracuse, New York</p>
+                <p class="experience-desc">Improved production workflow for transmitter antennas using DMAIC and process mapping. Led efforts to enhance data accuracy and streamline operations, reducing cycle time and increasing throughput.</p>
+            </div>
+
+            <div class="card experience-card">
+                <h3 class="experience-title">Software Engineer</h3>
+                <p class="experience-company">Bizmetric</p>
+                <p class="experience-meta">May 2023 - July 2024 | Pune, Maharashtra, India</p>
+                <p class="experience-desc">Transformed business data into actionable insights using Power BI. Optimized query performance, improving report generation time by 25%. Developed mobile and desktop apps using Power Apps.</p>
+            </div>
+
+            <div class="card experience-card">
+                <h3 class="experience-title">Associate Software Developer</h3>
+                <p class="experience-company">Bizmetric</p>
+                <p class="experience-meta">June 2022 - June 2023 | Pune, Maharashtra, India</p>
+                <p class="experience-desc">Developed data-driven solutions using SQL and Power BI. Created dashboards providing actionable insights and improved reporting efficiency through data optimization.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Featured <span class="gradient-text">Projects</span></h2>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <h3 class="project-title">FinChat AI - Financial Analysis Chatbot</h3>
+                    <p class="project-desc">Multi-agent financial analysis chatbot using Python, Streamlit, vector databases, and RAG. Enabled conversational stock analysis and SEC filing interpretation.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">LLM</span>
+                        <span class="tech-tag">RAG</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="project-title">Healthcare Analytics Dashboard</h3>
+                    <p class="project-desc">Interactive healthcare analytics dashboard using Tableau and SQL analyzing chronic conditions and demographic trends across U.S. states.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Tableau</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Analytics</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="project-title">Energy Consumption & Efficiency Analysis</h3>
+                    <p class="project-desc">Energy analysis for residential buildings using R and RStudio. Applied regression models and decision trees to identify factors influencing heating/cooling demand.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">R</span>
+                        <span class="tech-tag">RStudio</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Shiny</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="project-title">Marketing Analytics & Pricing Elasticity</h3>
+                    <p class="project-desc">Analyzed U.S. retail orange juice sales data to quantify impact of price, promotions, and demographics on demand for pricing strategy insights.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">R</span>
+                        <span class="tech-tag">Analytics</span>
+                        <span class="tech-tag">Statistical Modeling</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="project-title">Cloud-Based Geospatial BI Dashboard</h3>
+                    <p class="project-desc">Developed KPI-driven dashboard using AWS QuickSight with interactive filters across time, geography, and customer segments.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">AWS QuickSight</span>
+                        <span class="tech-tag">SharePoint</span>
+                        <span class="tech-tag">BI</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="project-title">Low-Code Applications with Power Apps</h3>
+                    <p class="project-desc">Designed applications using Microsoft Power Apps integrated with Azure for healthcare, banking, and sales domains.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Power Apps</span>
+                        <span class="tech-tag">Azure</span>
+                        <span class="tech-tag">Low-Code</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container" style="max-width: 64rem;">
+            <h2><span class="gradient-text">Education</span></h2>
+            
+            <div class="card" style="margin-bottom: 1.5rem;">
+                <h3 class="edu-degree">Master of Science in Business Analytics</h3>
+                <p class="edu-school">Syracuse University - Martin J. Whitman School of Management</p>
+                <p class="edu-meta">August 2024 - December 2025 | GPA: 3.60/4.0</p>
+            </div>
+
+            <div class="card" style="margin-bottom: 1.5rem;">
+                <h3 class="edu-degree">Master of Science in Computer Science</h3>
+                <p class="edu-school">MIT World Peace University, Pune, India</p>
+                <p class="edu-meta">July 2020 - May 2022 | GPA: 3.78/4.0</p>
+            </div>
+
+            <div class="card" style="margin-bottom: 3rem;">
+                <h3 class="edu-degree">Bachelor of Science in Computer Science</h3>
+                <p class="edu-school">MIT World Peace University, Pune, India</p>
+                <p class="edu-meta">
+		<p class="edu-meta">July 2017 - May 2020 | GPA: 3.4/4.0</p>
+            </div>
+
+ <!-- Contact Section -->
+    <section id="contact">
+        <div class="container" style="max-width: 48rem;">
+            <h2>Get In <span class="gradient-text">Touch</span></h2>
+            
+            <div class="card contact-card">
+                <p class="contact-desc">
+                    Open to opportunities as a Business Intelligence Analyst, Business Analyst, Data Analyst, or Software Engineer. Let's connect and discuss opportunities in Analytics, BI, Strategy, and Software Development!
+                </p>
+                
+                <div class="button-group">
+                    <a href="mailto:shaher@syr.edu" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                        ✉ Email Me
+                    </a>
+                    <a href="https://www.linkedin.com/in/shraddha-aher21" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                        in LinkedIn
+                    </a>
+                </div>
+
+                <div class="contact-info">
+                    <p>📧 shaher@syr.edu </p>
+                    <p>📍 New York, United States</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Shraddha Aher. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Update active nav link
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
